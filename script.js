@@ -33,8 +33,6 @@ var keys = {
   "u": "ú",
   "y": "ü",
   "n": "ñ",
-  "!": "¡",
-  "?": "¿",
   "shift+1": "¡",
   "shift+/": "¿",
 };
@@ -44,6 +42,13 @@ for (let key in keys) {
     e.preventDefault();
     insertString(keys[key]);
   });
+
+  if (key.indexOf("shift+") === -1) {
+  	Mousetrap.bind("alt+shift+" + key, function(e) {
+  		e.preventDefault();
+  		insertString(keys[key].toUpperCase());	
+  	});
+  }
 }
 
 })();
